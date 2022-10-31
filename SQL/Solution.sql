@@ -32,11 +32,27 @@ where bl.Date > '01.02.2005' or bl.Date like NULL
 
 --задание 3
 --
+select
+CounterpartyID,
+Name,
+COUNT(t.AssetID) + COUNT(t.RcvID) + COUNT(t.SndID) as Cnt
+from dbo.Counterparty c with(nolock)
+left join dbo.Trans t with(nolock) on t.RcvID = c.CounterpartyID
+where t.AssetID = c.CounterpartyID or t.RcvID = c.CounterpartyID or t.SndID = c.CounterpartyID
+---
 
 
 --задание 4
 --
-
+select
+(select pt1.PeriodID
+from dbo.PeriodTable pt1 with(nolock)
+where (pt1.PeriodID not pt.PeriodID) and (pt.Value not pt1.Value)) as PeriodID
+from dbo.PeriodTable pt with(nolock)
+--
+delete from dbo.PeriodTable pt where (select pt1.PeriodID
+from dbo.PeriodTable pt1 with(nolock)
+where (pt.PeriodID not pt1.PeriodID) and (pt.Value not pt1.Value)) = PeriodID
 
 --задание 5
 --
