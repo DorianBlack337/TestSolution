@@ -2,35 +2,17 @@
 
 namespace TrainApp
 {
-    class TrainApp : NumericLogic
+    class TrainApp
     {
         static void Main(string[] args)
         {
+            int rand;
             Random r = new Random();
-            Train.Numb = r.Next(1, 20);
-            Console.WriteLine("Размер поезда в рандоме: " + r + "\nВычисленный размер поезда: " + Counting(Train.Numb));
+            rand = r.Next(1, 10);
+            Core.Train train = new Core.Train(rand);
+            train.Display();
+            Console.WriteLine("Размер поезда выпавший в рандоме: " + rand + "\nВычисленный размер поезда: " + train.Count());
             Console.ReadKey();
         }
-    }
-
-    class NumericLogic
-    {
-        /// <summary>
-        /// Counting train
-        /// </summary>
-        /// <param name="r">random arg</param>
-        /// <returns></returns>
-        static public int Counting(int r)
-        {
-            return 1;
-        }
-    }
-
-    class Train
-    {
-        /// <summary>
-        /// global variable Numb
-        /// </summary>
-        static public int Numb { get; set; }
     }
 }
