@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Core
+namespace TrainLogic
 {
-    class Train
+    public class Train
     {
         private int TrainSize { get; set; }
         private System.Data.TrainCollection _trainCollection;

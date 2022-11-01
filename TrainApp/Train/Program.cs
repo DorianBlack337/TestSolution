@@ -4,14 +4,15 @@ namespace TrainApp
 {
     class TrainApp
     {
+        public static int Numb { get; set; }
+
         static void Main(string[] args)
         {
-            int rand;
             Random r = new Random();
-            rand = r.Next(1, 10);
-            Core.Train train = new Core.Train(rand);
+            Numb = r.Next(1, 10);
+            TrainLogic.Train train = new TrainLogic.Train(Numb);
             train.Display();
-            Console.WriteLine("Размер поезда выпавший в рандоме: " + rand + "\nВычисленный размер поезда: " + train.Count());
+            Console.WriteLine("Размер поезда выпавший в рандоме: " + Numb + "\nВычисленный размер поезда: " + train.Count());
             Console.ReadKey();
         }
     }
