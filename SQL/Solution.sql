@@ -1,4 +1,4 @@
---задание 0
+--ex 0
 --
 select
 ID,
@@ -7,13 +7,13 @@ from dbo.Employee with(nolock)
 where (select max(Sale) from dbo.Employee with(nolock) where ID <> ChiefID)
 > (select max(Sale) from dbo.Employee with(nolock) where ID = ChiefID)
 
---задание 1
+--ex 1
 --
 /*
-Процесс 2 (Read Commited) Изменение данных с 0 -> 1 Т раз.
-Процесс 3 (Read Uncommited) Изменение данных с 0 -> 1 Т раз.
+Process 2 (Read Committed) Changing data from 0 -> 1 T times.
+Process 3 (Read Uncommited) Changing data from 0 -> 1 T times.
 */
---задание 2
+--ex 2
 --
 select
 b.BookID as ID,
@@ -30,7 +30,7 @@ from dbo.tblBook b with(nolock)
 left join dbo.BookInLibrary bl with(nolock) on b.BookID = bl.BookID
 where bl.Date > '01.02.2005' or bl.Date like NULL
 
---задание 3
+--ex 3
 --
 select
 CounterpartyID,
@@ -42,7 +42,7 @@ where t.AssetID = c.CounterpartyID or t.RcvID = c.CounterpartyID or t.SndID = c.
 ---
 
 
---задание 4
+--ex 4
 --
 select
 (select pt1.PeriodID
@@ -53,6 +53,3 @@ from dbo.PeriodTable pt with(nolock)
 delete from dbo.PeriodTable pt where (select pt1.PeriodID
 from dbo.PeriodTable pt1 with(nolock)
 where (pt.PeriodID not pt1.PeriodID) and (pt.Value not pt1.Value)) = PeriodID
-
---задание 5
---
